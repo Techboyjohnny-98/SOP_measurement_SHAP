@@ -6,6 +6,7 @@ import pandas as pd
 import glob
 import os
 
+# ------Samsung 30T cell
 # ------Extract features from SOP measurement data (Test #3)
 folder_path = '../Source_data/Test#3/'
 file_list = glob.glob(os.path.join(folder_path, '*.csv'))
@@ -67,7 +68,7 @@ for file in file_list:
         time_window_start = current_time - 5
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_5.append(current_mean)
     # Average current - 10 second
     avg_currents_10 = []
@@ -76,7 +77,7 @@ for file in file_list:
         time_window_start = current_time - 10
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_10.append(current_mean)
     # Average current - 20 second
     avg_currents_20 = []
@@ -85,7 +86,7 @@ for file in file_list:
         time_window_start = current_time - 20
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_20.append(current_mean)
     # Average current - 50 second
     avg_currents_50 = []
@@ -94,7 +95,7 @@ for file in file_list:
         time_window_start = current_time - 50
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_50.append(current_mean)
 
     data_X = pd.DataFrame({
@@ -153,7 +154,7 @@ for file in file_list:
         time_window_start = current_time - 5
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_5.append(current_mean)
     # Average current - 10 second
     avg_currents_10 = []
@@ -162,7 +163,7 @@ for file in file_list:
         time_window_start = current_time - 10
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_10.append(current_mean)
     # Average current - 20 second
     avg_currents_20 = []
@@ -171,7 +172,7 @@ for file in file_list:
         time_window_start = current_time - 20
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_20.append(current_mean)
     # Average current - 50 second
     avg_currents_50 = []
@@ -180,7 +181,7 @@ for file in file_list:
         time_window_start = current_time - 50
         # Get rows in the past seconds
         mask = (df['Test_Time(s)'] >= time_window_start) & (df['Test_Time(s)'] <= current_time)
-        current_mean = df.loc[mask, 'Current(A)'].mean()
+        current_mean = df.loc[mask, 'Current(A)'].abs().mean()
         avg_currents_50.append(current_mean)
 
     data_X = pd.DataFrame({
@@ -205,10 +206,14 @@ data_Y = pd.concat(alldata_Y, ignore_index=True)
 data_full = data_X.copy()
 data_full['SOP(W)'] = data_Y  # add target column to the end
 # Save to CSV
-output_path = 'SOP_ML_dataset.csv'
+output_path = 'SOP_ML_dataset_Samsung30T.csv'
 data_full.to_csv(output_path, index=False)
 # Final check
-print("Input shape:", data_X.shape)
-print("Target shape:", data_Y.shape)
-print(data_X.head())
-print(data_Y.head())
+# print("Input shape:", data_X.shape)
+# print("Target shape:", data_Y.shape)
+# print(data_X.head())
+# print(data_Y.head())
+
+
+# ------LFP cell!!!!
+

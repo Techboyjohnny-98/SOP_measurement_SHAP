@@ -8,15 +8,21 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 import shap
 import numpy as np
+from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+
 
 # -------------------------------
 # Step 1: Load the Dataset
 # -------------------------------
-data = pd.read_csv("SOP_ML_dataset.csv")
+# data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
+data = pd.read_csv("SOP_ML_dataset_A123.csv")
 
 # Separate features and target
-X = data.drop(columns=["SOP(W)"])
+X_origin = data.drop(columns=["SOP(W)"])
+# Normalize inputs
+scaler = StandardScaler()
+X = pd.DataFrame(scaler.fit_transform(X_origin), columns=X_origin.columns)
 y = data["SOP(W)"]
 
 # -------------------------------
@@ -51,8 +57,8 @@ print(f"Test R² Score: {r2:.4f}")
 # -------------------------------
 # Step 5: SHAP Analysis
 # -------------------------------
-explainer = shap.Explainer(model, X_train)
-shap_values = explainer(X_test)
+explainer = shap.Explainer(model, X)
+shap_values = explainer(X)
 
 # Summary plot: feature importance
 shap.summary_plot(shap_values, X_test, plot_type="bar")
@@ -67,18 +73,19 @@ shap.summary_plot(shap_values, X_test, plot_type="bar")
 model.save_model("XGBoost_SOP_model.json")
 
 # -------------------------------
-# Step 6: Save SHAP Values and Test Data
+# Step 6: Calculate heatmap
+# -------------------------------
+shap_df = pd.DataFrame(shap_values.values, columns=X_origin.columns)
+combined_df = X_origin.copy()
+combined_df["True_SOP(W)"] = y.values
+for col in shap_df.columns:
+    combined_df[f"SHAP_{col}"] = shap_df[col]
+# Sort by SOC in descending order
+combined_df_sorted = combined_df.sort_values(by="SOC", ascending=False).reset_index(drop=True)
+# Save sorted data
+combined_df_sorted.to_csv("Sorted_SOC_SHAP_A123.csv", index=False)
+
+# -------------------------------
+# Step 7: Get mean SHAP values for each SOC range
 # -------------------------------
 
-# Convert SHAP values to DataFrame (same shape as X_test)
-shap_df = pd.DataFrame(shap_values.values, columns=X_test.columns)
-
-# Save X_test, y_test, and SHAP values
-X_test.reset_index(drop=True, inplace=True)
-y_test_df = pd.DataFrame(y_test.values, columns=["True_SOP(W)"])
-
-X_test.to_csv("X_test.csv", index=False)
-y_test_df.to_csv("Y_test.csv", index=False)
-shap_df.to_csv("SHAP_values.csv", index=False)
-
-print("X_test, Y_test, and SHAP values saved to CSV.")

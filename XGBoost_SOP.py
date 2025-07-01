@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 # Step 1: Load the Dataset
 # -------------------------------
 # data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
-data = pd.read_csv("SOP_ML_dataset_A123.csv")
+data = pd.read_csv("SOP_ML_dataset_aging.csv")
 
 # Separate features and target
 X_origin = data.drop(columns=["SOP(W)"])
@@ -41,6 +41,19 @@ model = xgb.XGBRegressor(
     colsample_bytree=0.8,
     random_state=42
 )
+
+print("NaN in y_train:", np.isnan(y_train).any())
+print("Inf in y_train:", np.isinf(y_train).any())
+# Find columns with NaN values
+# Find rows with any NaN values
+nan_rows = data[data.isna().any(axis=1)]
+
+# Print the row indices and corresponding rows
+if not nan_rows.empty:
+    print(f"Found {len(nan_rows)} row(s) containing NaN values:")
+    print(nan_rows)
+else:
+    print("No NaN values found in any row.")
 model.fit(X_train, y_train)
 
 # -------------------------------
@@ -83,7 +96,7 @@ for col in shap_df.columns:
 # Sort by SOC in descending order
 combined_df_sorted = combined_df.sort_values(by="SOC", ascending=False).reset_index(drop=True)
 # Save sorted data
-combined_df_sorted.to_csv("Sorted_SOC_SHAP_A123.csv", index=False)
+combined_df_sorted.to_csv("Sorted_SOC_SHAP_aging.csv", index=False)
 
 # -------------------------------
 # Step 7: Get mean SHAP values for each SOC range

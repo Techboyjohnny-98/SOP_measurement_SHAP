@@ -92,12 +92,12 @@ for file in file_list:
         'SOC': SOC,
         'PulseLength(s)': pulseLength,
         'Temperature(C)': temperature,
-        'Voltage(V)': voltage
-        # 'Current(A)': current,
-        # 'AvgCurrent_5s': avg_currents_5,
-        # 'AvgCurrent_10s': avg_currents_10,
-        # 'AvgCurrent_20s': avg_currents_20,
-        # 'AvgCurrent_50s': avg_currents_50
+        'Voltage(V)': voltage,
+        'Current(A)': current,
+        'AvgCurrent_5s': avg_currents_5,
+        'AvgCurrent_10s': avg_currents_10,
+        'AvgCurrent_20s': avg_currents_20,
+        'AvgCurrent_50s': avg_currents_50
     })
     alldata_X.append(data_X)
     alldata_Y.append(SOP_disch)

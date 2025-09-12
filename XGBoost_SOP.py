@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt
 # -------------------------------
 # Step 1: Load the Dataset
 # -------------------------------
-# data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
-data = pd.read_csv("SOP_ML_dataset_aging.csv")
+data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
+# data = pd.read_csv("SOP_ML_dataset_aging.csv")
 
 # Separate features and target
 X_origin = data.drop(columns=["SOP(W)"])
@@ -70,11 +70,18 @@ print(f"Test R² Score: {r2:.4f}")
 # -------------------------------
 # Step 5: SHAP Analysis
 # -------------------------------
+explainer = shap.TreeExplainer(model)
+shap_values = explainer.shap_values(X)
+
+shap.summary_plot(shap_values, X)
+# plt.savefig("SHAP_bee_swarm.svg", format="svg", bbox_inches="tight")
+
 explainer = shap.Explainer(model, X)
 shap_values = explainer(X)
 
 # Summary plot: feature importance
 shap.summary_plot(shap_values, X_test, plot_type="bar")
+
 
 # Optional: Detailed force plot for one prediction
 # shap.initjs()
@@ -96,7 +103,7 @@ for col in shap_df.columns:
 # Sort by SOC in descending order
 combined_df_sorted = combined_df.sort_values(by="SOC", ascending=False).reset_index(drop=True)
 # Save sorted data
-combined_df_sorted.to_csv("Sorted_SOC_SHAP_aging.csv", index=False)
+combined_df_sorted.to_csv("Sorted_SOC_SHAP_Samsung30T.csv", index=False)
 
 # -------------------------------
 # Step 7: Get mean SHAP values for each SOC range

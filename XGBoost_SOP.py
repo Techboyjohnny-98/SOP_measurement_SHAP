@@ -80,7 +80,7 @@ explainer = shap.Explainer(model, X)
 shap_values = explainer(X)
 
 # Summary plot: feature importance
-shap.summary_plot(shap_values, X_test, plot_type="bar")
+shap.summary_plot(shap_values, X, plot_type="bar")
 
 
 # Optional: Detailed force plot for one prediction

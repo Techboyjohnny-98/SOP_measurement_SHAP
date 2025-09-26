@@ -67,6 +67,12 @@ r2 = r2_score(y_test, y_pred)
 print(f"Test RMSE: {rmse:.2f} W")
 print(f"Test R² Score: {r2:.4f}")
 
+y_pred = model.predict(X_train)
+rmse = np.sqrt(np.mean((y_train - y_pred) ** 2))
+r2 = r2_score(y_train, y_pred)
+
+print(f"Training RMSE: {rmse:.2f} W")
+print(f"Training R² Score: {r2:.4f}")
 # -------------------------------
 # Step 5: SHAP Analysis
 # -------------------------------

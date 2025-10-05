@@ -19,7 +19,7 @@ import os
 # -------------------------------
 # Step 1: Load the Dataset
 # -------------------------------
-data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
+data = pd.read_csv("SOP_ML_dataset_30T_oldData.csv")
 # data = pd.read_csv("SOP_ML_dataset_aging.csv")
 y = data["SOP(W)"]
 # Separate features and target
@@ -139,7 +139,7 @@ print(f"  Avg best_n_estimators: {best['best_iter_mean']} (median {best['best_it
 # -------------------------------
 # Step 3: Retrain a XGBoost model.
 # -------------------------------
-RANDOM_STATE = 20
+RANDOM_STATE = 12
 final_params = {k: best[k] for k in keys}
 final_n = max(50, best["best_iter_median"])  # median is robust to outliers
 kf = KFold(n_splits=5, shuffle=True, random_state=RANDOM_STATE)
@@ -151,6 +151,7 @@ all_y_pred_tr = []
 all_y_tr = []
 all_y_pred_va = []
 all_y_va = []
+fold_trainingRMSE = []
 
 for fold, (tr_idx, va_idx) in enumerate(kf.split(X, y), start=1):
     X_tr, X_va = X.iloc[tr_idx], X.iloc[va_idx]
@@ -174,7 +175,7 @@ for fold, (tr_idx, va_idx) in enumerate(kf.split(X, y), start=1):
     rmse = np.sqrt(np.mean((y_va - y_pred) ** 2))
     rmse_tr = np.sqrt(np.mean((y_tr - y_pred_tr) ** 2))
     r2 = r2_score(y_va, y_pred)
-    fold_metrics.append((rmse, r2))
+    fold_metrics.append((rmse, r2, rmse_tr))
     print(f"Fold {fold}: Testing RMSE={rmse:.2f} W | Training RMSE={rmse_tr:.2f} W  | R²={r2:.4f}")
 
     # Save predictions and actual values together
@@ -199,7 +200,7 @@ for fold, (tr_idx, va_idx) in enumerate(kf.split(X, y), start=1):
 # Step 4: SHAP analysis.
 # -------------------------------
     # SHAP on entire dataset.
-    explainer = shap.TreeExplainer(model)
+    explainer = shap.TreeExplainer(model, X, feature_perturbation="interventional")
     shap_vals = explainer.shap_values(X)
 
     shap_df = pd.DataFrame(shap_vals, columns=X_origin.columns, index=X.index)
@@ -271,9 +272,12 @@ mean_rmse = np.mean([m[0] for m in fold_metrics])
 std_rmse  = np.std([m[0] for m in fold_metrics])
 mean_r2   = np.mean([m[1] for m in fold_metrics])
 std_r2    = np.std([m[1] for m in fold_metrics])
+mean_rmse_tr   = np.mean([m[2] for m in fold_metrics])
+std_rmse_tr    = np.std([m[2] for m in fold_metrics])
 
 print("\nCV summary (5-fold):")
 print(f"  RMSE: {mean_rmse:.2f} ± {std_rmse:.2f} W")
+print(f"  Training RMSE: {mean_rmse_tr:.2f} ± {std_rmse_tr:.2f} W")
 print(f"  R²:   {mean_r2:.4f} ± {std_r2:.4f}")
 
 all_shap_df = pd.concat(all_shap, axis=0)

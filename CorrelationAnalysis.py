@@ -10,7 +10,7 @@ import numpy as np
 # -------------------------------
 # Step 1: Load dataset
 # -------------------------------
-data = pd.read_csv("SOP_ML_dataset_30T_oldData.csv")
+data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
 
 target = "SOP(W)"
 assert target in data.columns, f"'{target}' not found in columns: {list(data.columns)}"

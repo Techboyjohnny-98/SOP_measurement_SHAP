@@ -21,6 +21,7 @@ import os
 # -------------------------------
 data = pd.read_csv("SOP_ML_dataset_30T_oldData.csv")
 # data = pd.read_csv("SOP_ML_dataset_aging.csv")
+data['SOP(W)'] = data.groupby('test')['SOP(W)'].transform(lambda x: (x - x.mean()) / x.std())
 y = data["SOP(W)"]
 # Separate features and target
 X_origin = data.drop(columns=["SOP(W)"])
@@ -202,6 +203,7 @@ for fold, (tr_idx, va_idx) in enumerate(kf.split(X, y), start=1):
     # SHAP on entire dataset.
     explainer = shap.TreeExplainer(model, X, feature_perturbation="interventional")
     shap_vals = explainer.shap_values(X)
+    shap.dependence_plot('AvgCurrent_20s', shap_vals, X, interaction_index='test')
 
     shap_df = pd.DataFrame(shap_vals, columns=X_origin.columns, index=X.index)
     meta_df = X_origin.copy()

@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # -------------------------------
 # Step 1: Load the Dataset
 # -------------------------------
-data = pd.read_csv("SOP_ML_dataset_Samsung30T.csv")
+data = pd.read_csv("SOP_ML_dataset_30T_oldData.csv")
 # data = pd.read_csv("SOP_ML_dataset_aging.csv")
 
 # Separate features and target

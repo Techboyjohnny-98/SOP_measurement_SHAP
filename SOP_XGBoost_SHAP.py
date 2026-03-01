@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # -------------------------------
 # Step 1: Load the Dataset
 # -------------------------------
-data = pd.read_csv("SOP_ML_dataset_30T_oldData.csv")
+data = pd.read_csv("SOP_ML_dataset_30T_tryAndCombine.csv") # Scaled SOP for Test3 + Test8
 # data = pd.read_csv("SOP_ML_dataset_aging.csv")
 
 # Separate features and target

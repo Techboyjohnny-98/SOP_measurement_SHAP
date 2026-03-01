@@ -8,6 +8,8 @@ import os
 
 alldata_Y = []
 alldata_X = []
+SOP_test3 = []
+SOP_test8 = []
 # # ------Samsung 30T
 # # ------Extract features from SOP measurement data (Old data)
 # folder_path = '../Source_data/Samsung30T_old/'
@@ -214,6 +216,7 @@ for file in file_list:
     })
     alldata_X.append(data_X)
     alldata_Y.append(SOP_disch)
+    SOP_test3.append(SOP_disch)
 
 # ------Extract features from SOP measurement data (Test #8)
 folder_path = '../Source_data/Test#8/'
@@ -300,14 +303,38 @@ for file in file_list:
     })
     alldata_X.append(data_X)
     alldata_Y.append(SOP_disch)
+    SOP_test8.append(SOP_disch)
 
 # --------------------Combine all data together
 data_X = pd.concat(alldata_X, ignore_index=True)
-data_Y = pd.concat(alldata_Y, ignore_index=True)
+data_Y_real = pd.concat(alldata_Y, ignore_index=True)
+Y_test8 = pd.concat(SOP_test8, ignore_index=True)
+Y_test3 = pd.concat(SOP_test3, ignore_index=True)
+
+# Min-Max scale (column-wise if DataFrame)
+y_min = Y_test8.min()
+y_max = Y_test8.max()
+den = (y_max - y_min)
+# scalar-safe guard
+if den == 0:
+    Y_test8_mm = Y_test8 * 0.0   # or just Y_test8.copy()
+else:
+    Y_test8_mm = (Y_test8 - y_min) / den
+y_min = Y_test3.min()
+y_max = Y_test3.max()
+den = (y_max - y_min)
+# scalar-safe guard
+if den == 0:
+    Y_test3_mm = Y_test3 * 0.0   # or just Y_test3.copy()
+else:
+    Y_test3_mm = (Y_test3 - y_min) / den
+
+data_Y = pd.concat([Y_test3_mm, Y_test8_mm], ignore_index=True)
 
 # Combine features and target into one DataFrame
 data_full = data_X.copy()
 data_full['SOP(W)'] = data_Y  # add target column to the end
+data_full['SOP(W)_real'] = data_Y_real  # add target column to the end
 # Save to CSV
 output_path = 'SOP_ML_dataset_30T_tryAndCombine.csv'
 data_full.to_csv(output_path, index=False)

@@ -15,15 +15,16 @@ import matplotlib.pyplot as plt
 # -------------------------------
 # Step 1: Load the Dataset
 # -------------------------------
-data = pd.read_csv("SOP_ML_dataset_30T_tryAndCombine.csv") # Scaled SOP for Test3 + Test8
-# data = pd.read_csv("SOP_ML_dataset_aging.csv")
-
+# data = pd.read_csv("SOP_ML_dataset_30T_tryAndCombine.csv") # Scaled SOP for Test3 + Test8
+data_CC = pd.read_csv("SOP_ML_dataset_aging_CC.csv")
+data_US06 = pd.read_csv("SOP_ML_dataset_aging_US06.csv")
+data_all = pd.read_csv("SOP_ML_dataset_aging.csv")
 # Separate features and target
-X_origin = data.drop(columns=["SOP(W)"])
+X_origin = data_CC.drop(columns=["SOP(W)"])
 # Normalize inputs
 scaler = StandardScaler()
 X = pd.DataFrame(scaler.fit_transform(X_origin), columns=X_origin.columns)
-y = data["SOP(W)"]
+y = data_CC["SOP(W)"]
 
 # -------------------------------
 # Step 2: Split the Dataset
@@ -46,7 +47,7 @@ print("NaN in y_train:", np.isnan(y_train).any())
 print("Inf in y_train:", np.isinf(y_train).any())
 # Find columns with NaN values
 # Find rows with any NaN values
-nan_rows = data[data.isna().any(axis=1)]
+nan_rows = data_CC[data_CC.isna().any(axis=1)]
 
 # Print the row indices and corresponding rows
 if not nan_rows.empty:

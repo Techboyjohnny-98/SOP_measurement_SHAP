@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ce840258-5c52-41f2-a181-b653987a13cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SOP_XGBoost_SHAP_splitTraining.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SOP_measurement_SHAP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SOP_measurement_SHAP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOP_ML_dataset_Samsung30T.csv" beforeDir="false" afterPath="$PROJECT_DIR$/SOP_ML_dataset_Samsung30T.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SOP_XGBoost_SHAP.py" beforeDir="false" afterPath="$PROJECT_DIR$/SOP_XGBoost_SHAP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataCreate_Samsung30T.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataCreate_Samsung30T.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Techboyjohnny-98&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Techboyjohnny-98/SOP_measurement_SHAP.git&quot;,
+    &quot;accountId&quot;: &quot;aa5c32cb-d40c-4f65-9365-e5a904fdc61b&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2z6c7F98QeGkJSf2Paxb1HPpODh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.Cal_rangeEstim.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CorrelationAnalysis.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.SOP_XGBoost_SHAP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.XGBoost_SOP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.XGBoost_SOP_crossValid.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.dataCreate.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataCreate_30T_oldData.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataCreate_30T_tryAndCombine.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.dataCreate_A123.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataCreate_Samsung30T.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fitting_RvsSOP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fitting_cycleVSSOP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.linear_interpolation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/junran/Library/CloudStorage/OneDrive-Personal/McMaster/Research/Paper/SOP_measurement/Data/SOP_measurement_SHAP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OneDrive\McMaster\Research\Paper\SOP_measurement\Data\SOP_measurement_SHAP" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.dataCreate_Samsung30T">
+    <configuration name="CorrelationAnalysis" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CorrelationAnalysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SOP_XGBoost_SHAP" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SOP_XGBoost_SHAP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="XGBoost_SOP" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/XGBoost_SOP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="XGBoost_SOP_crossValid" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/XGBoost_SOP_crossValid.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataCreate_30T_tryAndCombine" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataCreate_30T_tryAndCombine.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataCreate_Samsung30T" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataCreate_Samsung30T.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="fitting_cycleVSSOP" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SOP_measurement_SHAP" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fitting_cycleVSSOP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.dataCreate_Samsung30T" />
+        <item itemvalue="Python.dataCreate_30T_tryAndCombine" />
+        <item itemvalue="Python.SOP_XGBoost_SHAP" />
+        <item itemvalue="Python.CorrelationAnalysis" />
+        <item itemvalue="Python.XGBoost_SOP_crossValid" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.29188.22" />
+        <option value="bundled-python-sdk-1f1b7bcced7d-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.29188.22" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce840258-5c52-41f2-a181-b653987a13cc" name="Changes" comment="" />
+      <created>1751054793787</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1751054793787</updated>
+      <workItem from="1751054794857" duration="795000" />
+      <workItem from="1751058723659" duration="11000" />
+      <workItem from="1751058817043" duration="10586000" />
+      <workItem from="1751288371492" duration="5000" />
+      <workItem from="1751294876336" duration="8101000" />
+      <workItem from="1751319114333" duration="4000" />
+      <workItem from="1751319125073" duration="2323000" />
+      <workItem from="1751898597785" duration="5000" />
+      <workItem from="1753814546379" duration="7861000" />
+      <workItem from="1753982126616" duration="347000" />
+      <workItem from="1753982651776" duration="5744000" />
+      <workItem from="1754058581785" duration="879000" />
+      <workItem from="1754060086797" duration="21000" />
+      <workItem from="1754060112691" duration="6000" />
+      <workItem from="1754060149722" duration="3000" />
+      <workItem from="1754060156408" duration="6242000" />
+      <workItem from="1754500224728" duration="1224000" />
+      <workItem from="1756906559649" duration="606000" />
+      <workItem from="1757687698214" duration="15467000" />
+      <workItem from="1758655944724" duration="5469000" />
+      <workItem from="1758672121636" duration="16745000" />
+      <workItem from="1758894880162" duration="25946000" />
+      <workItem from="1760181791698" duration="7115000" />
+      <workItem from="1764383848336" duration="1844000" />
+      <workItem from="1768301722049" duration="602000" />
+      <workItem from="1768872722827" duration="13000" />
+      <workItem from="1771599179684" duration="15768000" />
+      <workItem from="1772223713426" duration="83000" />
+      <workItem from="1772402641487" duration="4415000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataCreate_A123.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SOP_XGBoost_SHAP.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/XGBoost_SOP_crossValid.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/XGBoost_SOP_crossValid.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataCreate_30T_tryAndCombine.py</url>
+          <line>315</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="data_X" />
+        <watch expression="file == '../Source_data/Test##3/JC_SOP_30T_10s_25degC_Sep30_Channel_1_Wb_1.csv'" />
+      </configuration>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="112">
+        <watch expression="avg_currents_50" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="18">
+        <watch expression="file" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="104">
+        <watch expression="SOC" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="105">
+        <watch expression="pulseLength" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="110">
+        <watch expression="avg_currents_10" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="111">
+        <watch expression="avg_currents_20" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="107">
+        <watch expression="voltage" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="108">
+        <watch expression="current" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="109">
+        <watch expression="avg_currents_5" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="18">
+        <watch expression="file == '../Source_data/Test##3\\JC_SOP_30T_10s_25degC_Sep30_Channel_1_Wb_1.csv'" />
+      </inline-watch>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/dataCreate_Samsung30T.py" line="106">
+        <watch expression="temperature" />
+      </inline-watch>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$XGBoost_SOP.coverage" NAME="SOP_XGBoost_SHAP Coverage Results" MODIFIED="1772143526001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$dataCreate_Samsung30T.coverage" NAME="dataCreate_Samsung30T Coverage Results" MODIFIED="1772454416768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$test.coverage" NAME="linear_interpolation Coverage Results" MODIFIED="1753975998387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$Cal_rangeEstim.coverage" NAME="Cal_rangeEstim Coverage Results" MODIFIED="1754064007816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$dataCreate_A123.coverage" NAME="dataCreate_A123 Coverage Results" MODIFIED="1751297193608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$dataCreate.coverage" NAME="dataCreate Coverage Results" MODIFIED="1751073546177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$XGBoost_SOP_crossValid.coverage" NAME="XGBoost_SOP_crossValid Coverage Results" MODIFIED="1760207811034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$linear_interpolation.coverage" NAME="linear_interpolation Coverage Results" MODIFIED="1754063988846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$dataCreate_30T_oldData.coverage" NAME="dataCreate_30T_tryAndCombine Coverage Results" MODIFIED="1772143881816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$fitting_RvsSOP.coverage" NAME="fitting_RvsSOP Coverage Results" MODIFIED="1754500268565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$CorrelationAnalysis.coverage" NAME="CorrelationAnalysis Coverage Results" MODIFIED="1771601786664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SOP_measurement_SHAP$fitting_cycleVSSOP.coverage" NAME="fitting_cycleVSSOP Coverage Results" MODIFIED="1754500484898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

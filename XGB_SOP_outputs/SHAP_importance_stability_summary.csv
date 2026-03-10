@@ -1,0 +1,5 @@
+feature,mean_abs_shap_mean,mean_abs_shap_std
+SOC,27.654663,0.019685661
+Temperature(C),6.0199413,0.009863991
+R_50%,5.865651,0.2907766
+Capacity,2.0158973,0.2485981

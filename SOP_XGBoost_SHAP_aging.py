@@ -234,6 +234,12 @@ def tune_hyperparameters(
             eval_set=[(X_val, y_val)],
             verbose=False
         )
+        booster = model.get_booster()
+        tree_df = booster.trees_to_dataframe()
+
+        n_leaves = int((tree_df["Feature"] == "Leaf").sum())
+        n_splits = int((tree_df["Feature"] != "Leaf").sum())
+        n_nodes = int(len(tree_df))
 
         y_val_pred = model.predict(X_val)
         val_rmse = rmse(y_val, y_val_pred)
@@ -246,6 +252,9 @@ def tune_hyperparameters(
         rec["val_r2"] = val_r2
         rec["best_iteration"] = int(model.best_iteration)
         rec["best_n_estimators"] = chosen_n_estimators
+        rec["n_leaves"] = n_leaves
+        rec["n_splits"] = n_splits
+        rec["n_nodes"] = n_nodes
         records.append(rec)
 
         if val_rmse < best_rmse:

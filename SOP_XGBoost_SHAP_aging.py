@@ -39,7 +39,7 @@ VAL_FRAC = 0.20
 TUNE_SEED = 42
 
 # Seeds used to evaluate stochastic training robustness
-ROBUSTNESS_SEEDS = [0, 1, 2, 3, 4]
+ROBUSTNESS_SEEDS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
 # Fixed seed for the final SHAP model
 FINAL_SHAP_SEED = 42
@@ -276,19 +276,31 @@ def evaluate_across_seeds(
     best_n_estimators: int,
     seeds: list,
     fold_name: str
-) -> pd.DataFrame:
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Retrain on train+val with fixed n_estimators and no early stopping,
     then evaluate on the held-out test cell.
+
+    Returns
+    -------
+    metrics_df : pd.DataFrame
+        Per-seed summary metrics.
+    predictions_df : pd.DataFrame
+        Row-wise true/predicted values for train and test sets.
     """
-    train_full = pd.concat([train_df, val_df], axis=0).sort_values([CELL_COL, ORDER_COL]).reset_index(drop=True)
+    train_full = (
+        pd.concat([train_df, val_df], axis=0)
+        .sort_values([CELL_COL, ORDER_COL])
+        .reset_index(drop=True)
+    )
 
     X_train_full = train_full[feature_cols]
     y_train_full = train_full[target_col]
     X_test = test_df[feature_cols]
     y_test = test_df[target_col]
 
-    results = []
+    metrics_results = []
+    prediction_rows = []
 
     for seed in seeds:
         model = build_model(
@@ -303,7 +315,8 @@ def evaluate_across_seeds(
         y_train_pred = model.predict(X_train_full)
         y_test_pred = model.predict(X_test)
 
-        results.append({
+        # Summary metrics
+        metrics_results.append({
             "fold": fold_name,
             "seed": seed,
             "n_estimators": best_n_estimators,
@@ -313,7 +326,29 @@ def evaluate_across_seeds(
             "test_r2": r2_score(y_test, y_test_pred)
         })
 
-    return pd.DataFrame(results)
+        # Row-wise train predictions
+        train_pred_df = train_full.copy().reset_index(drop=True)
+        train_pred_df["fold"] = fold_name
+        train_pred_df["seed"] = seed
+        train_pred_df["split"] = "train"
+        train_pred_df["y_true"] = y_train_full.values
+        train_pred_df["y_pred"] = y_train_pred
+
+        # Row-wise test predictions
+        test_pred_df = test_df.copy().reset_index(drop=True)
+        test_pred_df["fold"] = fold_name
+        test_pred_df["seed"] = seed
+        test_pred_df["split"] = "test"
+        test_pred_df["y_true"] = y_test.values
+        test_pred_df["y_pred"] = y_test_pred
+
+        prediction_rows.append(train_pred_df)
+        prediction_rows.append(test_pred_df)
+
+    metrics_df = pd.DataFrame(metrics_results)
+    predictions_df = pd.concat(prediction_rows, axis=0).reset_index(drop=True)
+
+    return metrics_df, predictions_df
 
 
 def make_soc_bins(series: pd.Series, bin_width_percent: int = 5):
@@ -546,7 +581,7 @@ for test_cell in unique_cells:
     print("Best validation RMSE:", tuning_df.iloc[0]["val_rmse"])
 
     # Evaluate robustness across seeds
-    seed_results_df = evaluate_across_seeds(
+    seed_results_df, prediction_df = evaluate_across_seeds(
         train_df=train_df,
         val_df=val_df,
         test_df=test_df,
@@ -559,6 +594,7 @@ for test_cell in unique_cells:
     )
 
     seed_results_df.to_csv(OUTPUT_DIR / f"Seed_robustness_test_{test_cell}.csv", index=False)
+    prediction_df.to_csv(OUTPUT_DIR / f"Seed_robustness_test_prediction_{test_cell}.csv", index=False)
     all_fold_seed_results.append(seed_results_df)
 
     summary_row = {

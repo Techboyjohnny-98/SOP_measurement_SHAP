@@ -40,6 +40,7 @@ TUNE_SEED = 42
 
 # Seeds used to evaluate stochastic training robustness
 ROBUSTNESS_SEEDS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+# ROBUSTNESS_SEEDS = [0, 1, 2, 3, 4, 5]
 
 # Fixed seed for the final SHAP model
 FINAL_SHAP_SEED = 42
@@ -545,87 +546,87 @@ if TARGET_COL not in data_all.columns:
 # ============================================================
 # 4. Leave-one-cell-out evaluation
 # ============================================================
-# all_fold_seed_results = []
-# all_fold_summaries = []
-#
-# unique_cells = data_all[CELL_COL].unique().tolist()
-#
-# for test_cell in unique_cells:
-#     print("\n" + "=" * 70)
-#     print(f"LOCO fold: test on {test_cell}")
-#     print("=" * 70)
-#
-#     train_pool = data_all[data_all[CELL_COL] != test_cell].copy()
-#     test_df = data_all[data_all[CELL_COL] == test_cell].copy()
-#
-#     train_df, val_df = chronological_split_training_pool(train_pool, val_frac=VAL_FRAC)
-#
-#     # Tune with fixed seed + early stopping
-#     best_params, best_n_estimators, tuning_df = tune_hyperparameters(
-#         train_df=train_df,
-#         val_df=val_df,
-#         feature_cols=feature_cols,
-#         target_col=TARGET_COL,
-#         param_grid=PARAM_GRID,
-#         seed=TUNE_SEED,
-#         tuning_n_estimators_ceiling=TUNING_N_ESTIMATORS_CEILING,
-#         early_stopping_rounds=EARLY_STOPPING_ROUNDS
-#     )
-#
-#     tuning_df.to_csv(OUTPUT_DIR / f"Tuning_results_test_{test_cell}.csv", index=False)
-#     save_tuning_plots(tuning_df, OUTPUT_DIR / f"Tuning_test_{test_cell}")
-#
-#     print("Best params:")
-#     print(best_params)
-#     print("Best n_estimators:", best_n_estimators)
-#     print("Best validation RMSE:", tuning_df.iloc[0]["val_rmse"])
-#
-#     # Evaluate robustness across seeds
-#     seed_results_df, prediction_df = evaluate_across_seeds(
-#         train_df=train_df,
-#         val_df=val_df,
-#         test_df=test_df,
-#         feature_cols=feature_cols,
-#         target_col=TARGET_COL,
-#         best_params=best_params,
-#         best_n_estimators=best_n_estimators,
-#         seeds=ROBUSTNESS_SEEDS,
-#         fold_name=f"test_{test_cell}"
-#     )
-#
-#     seed_results_df.to_csv(OUTPUT_DIR / f"Seed_robustness_test_{test_cell}.csv", index=False)
-#     prediction_df.to_csv(OUTPUT_DIR / f"Seed_robustness_test_prediction_{test_cell}.csv", index=False)
-#     all_fold_seed_results.append(seed_results_df)
-#
-#     summary_row = {
-#         "fold": f"test_{test_cell}",
-#         "best_params": str(best_params),
-#         "best_n_estimators": best_n_estimators,
-#         "test_rmse_mean": seed_results_df["test_rmse"].mean(),
-#         "test_rmse_std": seed_results_df["test_rmse"].std(),
-#         "test_r2_mean": seed_results_df["test_r2"].mean(),
-#         "test_r2_std": seed_results_df["test_r2"].std(),
-#         "train_rmse_mean": seed_results_df["train_rmse"].mean(),
-#         "train_rmse_std": seed_results_df["train_rmse"].std(),
-#         "train_r2_mean": seed_results_df["train_r2"].mean(),
-#         "train_r2_std": seed_results_df["train_r2"].std()
-#     }
-#     all_fold_summaries.append(summary_row)
-#
-#     print("\nSeed robustness summary:")
-#     print(seed_results_df)
-#
-#
-# all_fold_seed_results_df = pd.concat(all_fold_seed_results, axis=0).reset_index(drop=True)
-# all_fold_seed_results_df.to_csv(OUTPUT_DIR / "All_LOCO_seed_results.csv", index=False)
-#
-# all_fold_summary_df = pd.DataFrame(all_fold_summaries)
-# all_fold_summary_df.to_csv(OUTPUT_DIR / "All_LOCO_summary.csv", index=False)
-#
-# print("\n" + "=" * 70)
-# print("Overall LOCO summary")
-# print("=" * 70)
-# print(all_fold_summary_df)
+all_fold_seed_results = []
+all_fold_summaries = []
+
+unique_cells = data_all[CELL_COL].unique().tolist()
+
+for test_cell in unique_cells:
+    print("\n" + "=" * 70)
+    print(f"LOCO fold: test on {test_cell}")
+    print("=" * 70)
+
+    train_pool = data_all[data_all[CELL_COL] != test_cell].copy()
+    test_df = data_all[data_all[CELL_COL] == test_cell].copy()
+
+    train_df, val_df = chronological_split_training_pool(train_pool, val_frac=VAL_FRAC)
+
+    # Tune with fixed seed + early stopping
+    best_params, best_n_estimators, tuning_df = tune_hyperparameters(
+        train_df=train_df,
+        val_df=val_df,
+        feature_cols=feature_cols,
+        target_col=TARGET_COL,
+        param_grid=PARAM_GRID,
+        seed=TUNE_SEED,
+        tuning_n_estimators_ceiling=TUNING_N_ESTIMATORS_CEILING,
+        early_stopping_rounds=EARLY_STOPPING_ROUNDS
+    )
+
+    tuning_df.to_csv(OUTPUT_DIR / f"Tuning_results_test_{test_cell}.csv", index=False)
+    save_tuning_plots(tuning_df, OUTPUT_DIR / f"Tuning_test_{test_cell}")
+
+    print("Best params:")
+    print(best_params)
+    print("Best n_estimators:", best_n_estimators)
+    print("Best validation RMSE:", tuning_df.iloc[0]["val_rmse"])
+
+    # Evaluate robustness across seeds
+    seed_results_df, prediction_df = evaluate_across_seeds(
+        train_df=train_df,
+        val_df=val_df,
+        test_df=test_df,
+        feature_cols=feature_cols,
+        target_col=TARGET_COL,
+        best_params=best_params,
+        best_n_estimators=best_n_estimators,
+        seeds=ROBUSTNESS_SEEDS,
+        fold_name=f"test_{test_cell}"
+    )
+
+    seed_results_df.to_csv(OUTPUT_DIR / f"Seed_robustness_test_{test_cell}.csv", index=False)
+    prediction_df.to_csv(OUTPUT_DIR / f"Seed_robustness_test_prediction_{test_cell}.csv", index=False)
+    all_fold_seed_results.append(seed_results_df)
+
+    summary_row = {
+        "fold": f"test_{test_cell}",
+        "best_params": str(best_params),
+        "best_n_estimators": best_n_estimators,
+        "test_rmse_mean": seed_results_df["test_rmse"].mean(),
+        "test_rmse_std": seed_results_df["test_rmse"].std(),
+        "test_r2_mean": seed_results_df["test_r2"].mean(),
+        "test_r2_std": seed_results_df["test_r2"].std(),
+        "train_rmse_mean": seed_results_df["train_rmse"].mean(),
+        "train_rmse_std": seed_results_df["train_rmse"].std(),
+        "train_r2_mean": seed_results_df["train_r2"].mean(),
+        "train_r2_std": seed_results_df["train_r2"].std()
+    }
+    all_fold_summaries.append(summary_row)
+
+    print("\nSeed robustness summary:")
+    print(seed_results_df)
+
+
+all_fold_seed_results_df = pd.concat(all_fold_seed_results, axis=0).reset_index(drop=True)
+all_fold_seed_results_df.to_csv(OUTPUT_DIR / "All_LOCO_seed_results.csv", index=False)
+
+all_fold_summary_df = pd.DataFrame(all_fold_summaries)
+all_fold_summary_df.to_csv(OUTPUT_DIR / "All_LOCO_summary.csv", index=False)
+
+print("\n" + "=" * 70)
+print("Overall LOCO summary")
+print("=" * 70)
+print(all_fold_summary_df)
 
 
 # ============================================================

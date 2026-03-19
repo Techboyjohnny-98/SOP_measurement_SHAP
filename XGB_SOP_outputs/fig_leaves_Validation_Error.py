@@ -6,8 +6,8 @@ from pathlib import Path
 # User settings
 # =========================
 # input_csv = "Tuning_results_test_CC.csv"
-# input_csv = "Tuning_results_test_US06.csv"
-input_csv = "Final_tuning_results_all_data.csv"
+input_csv = "Tuning_results_test_US06.csv"
+# input_csv = "Final_tuning_results_all_adata.csv"
 n_bins = 15   # change if needed
 
 # =========================

@@ -1,4 +1,5 @@
 ## Repository Contents
+This repository is used to generate results for publication: J. Chen, A. Emadi, and P. Kollmeyer, "Battery State of Power Measurement: A Generalized Methodology", not published yet
 
 ### Dataset
 * The SOP measurement dataset is available via McMaster University Dataverse (Borealis) at https://doi.org/10.5683/SP3/RPCWBY.

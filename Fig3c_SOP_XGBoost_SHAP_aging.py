@@ -1,5 +1,4 @@
 # Author: Junran Chen
-# Updated for paper-ready SOP XGBoost workflow
 # Purpose:
 #   1) Leave-one-cell-out evaluation
 #   2) Chronological validation split within training pool
